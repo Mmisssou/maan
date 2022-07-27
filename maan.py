@@ -16,7 +16,7 @@ from fastapi import FastAPI, Depends, HTTPException, status
 import sys
 from fastapi import FastAPI
 
-app = FastAPI( title="scoring crédit",
+app = FastAPI( title="Implémentez un modèle de scoring ",
     description="""Obtenir des informations relatives à la probabilité qu'un client ne rembourse pas son prêt""")
 
 
