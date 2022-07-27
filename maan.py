@@ -80,3 +80,27 @@ async def client_details(sk_ids: int):
 
     return client
 
+
+@app.get("/predictions/clients/{sk_ids}")
+async def predict(id: int):
+    """ 
+    EndPoint to get the probability honor/compliance of a client
+    """ 
+
+    # Loading the model
+    
+
+    # Filtering by client id
+    df_prediction_by_id = df_clients_to_predict[df_clients_to_predict["SK_ID_CURR"] == id]
+    df_prediction_by_id = df_prediction_by_id.drop(columns=["SK_ID_CURR"])
+
+    # Predicting
+    result = model.predict(df_prediction_by_id)
+    result_proba = model.predict_proba(df_prediction_by_id)
+
+    if (int(result[0]) == 0):
+         result = "Yes"
+    else:
+         result = "No"    
+
+    return {"repay" : result, "probability" : result_proba}
