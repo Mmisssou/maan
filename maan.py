@@ -22,7 +22,7 @@ app = FastAPI( title="scoring crédit",
 
 @app.get("/")
 def read_root():
-    return {"200": "Bienvenue sur API du projet N°:07"}
+    return {"200": "Bienvenue sur API du projet N°:07 Encadré par :Monsieur : El hadji Abdoulaye Thiam "}
 
 
 path = os.path.join('data', 'y_train.csv')
