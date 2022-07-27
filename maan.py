@@ -40,7 +40,12 @@ clients_id = df_clients_to_predict["SK_ID_CURR"].tolist()
 df_prediction_by_id = df_clients_to_predict[df_clients_to_predict["SK_ID_CURR"] == id]
 df_prediction_by_id = df_clients_to_predict[df_clients_to_predict["SK_ID_CURR"] == id]
 
-
+COLUMNS = [
+    "SK_ID_CURR", "AMT_INCOME_TOTAL", "CODE_GENDER", 
+    "DAYS_BIRTH", "DAYS_REGISTRATION", 
+    "AMT_CREDIT", "EXT_SOURCE_2",
+    "EXT_SOURCE_3", 
+]
 
 @app.get("/clients/{sk_ids}")
 async def client_details(sk_ids: int):
