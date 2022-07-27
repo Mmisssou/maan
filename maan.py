@@ -22,7 +22,7 @@ app = FastAPI( title="scoring crédit",
 
 @app.get("/")
 def read_root():
-    return {"200": "Welcome To Heroku"}
+    return {"200": "Bienvenue sur API du projet N°:07"}
 
 
 path = os.path.join('data', 'y_train.csv')
