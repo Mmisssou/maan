@@ -28,7 +28,8 @@ def read_root():
 path = os.path.join('data', 'y_train.csv')
 df_current_clients = pd.read_csv(path, index_col='SK_ID_CURR')
 
-
+df_current_clients_by_target_repaid = df_current_clients[df_current_clients["TARGET"] == 0]
+df_current_clients_by_target_not_repaid = df_current_clients[df_current_clients["TARGET"] == 1]
 
 
 
