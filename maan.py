@@ -46,7 +46,9 @@ COLUMNS = [
     "AMT_CREDIT", "EXT_SOURCE_2",
     "EXT_SOURCE_3", 
 ]
-
+path = os.path.join('model', 'bestmodel_joblib.pkl')
+with open(path, 'rb') as file:
+    model = joblib.load(file)
 @app.get("/clients/{sk_ids}")
 async def client_details(sk_ids: int):
     """ 
