@@ -25,6 +25,9 @@ def read_root():
     return {"200": "Welcome To Heroku"}
 
 
+path = os.path.join('data', 'y_train.csv')
+df_current_clients = pd.read_csv(path, index_col='SK_ID_CURR')
+
 
 
 
