@@ -6,7 +6,8 @@
 
 from fastapi import FastAPI
 
-app = FastAPI()
+app = FastAPI( title="scoring crédit",
+    description="""Obtenir des informations relatives à la probabilité qu'un client ne rembourse pas son prêt""")
 
 
 @app.get("/")
