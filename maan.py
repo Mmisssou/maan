@@ -49,6 +49,19 @@ COLUMNS = [
 path = os.path.join('model', 'bestmodel_joblib.pkl')
 with open(path, 'rb') as file:
     model = joblib.load(file)
+
+
+
+@app.post('/api/sk_ids/')
+def sk_ids(sk_ids : int):
+    # Extract list of all the 'SK_ID_CURR' ids in the X_test dataframe
+    sk_ids = pd.Series(list(X_test.index.sort_values()))
+    # Convert pd.Series to JSON
+    sk_ids_json = json.loads(sk_ids.to_json())
+    # Returning the processed data
+    return sk_ids
+
+
 @app.get("/clients/{sk_ids}")
 async def client_details(sk_ids: int):
     """ 
@@ -81,7 +94,7 @@ async def client_details(sk_ids: int):
     return client
 
 
-@app.get("/predictions/clients/{sk_ids}")
+@app.get("/api/predictions/clients/{sk_ids}")
 async def predict(id: int):
     """ 
     EndPoint to get the probability honor/compliance of a client
@@ -105,14 +118,7 @@ async def predict(id: int):
 
     return {"repay" : result, "probability" : result_proba}
 
-@app.post('/api/sk_ids/')
-def sk_ids(sk_ids : int):
-    # Extract list of all the 'SK_ID_CURR' ids in the X_test dataframe
-    sk_ids = pd.Series(list(X_test.index.sort_values()))
-    # Convert pd.Series to JSON
-    sk_ids_json = json.loads(sk_ids.to_json())
-    # Returning the processed data
-    return sk_ids
+
 
 
 @app.get('/api/feat_imp/')
